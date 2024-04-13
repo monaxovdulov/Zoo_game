@@ -47,33 +47,36 @@ hints = {0: "Страшное животное! Граф Дракула прев
 print(
     f"Привет! Сегодня мы сыграем в игру зоопарк! По месту вы должны отгадать животного, но у вас есть возможность взять подсказку.")
 
-time.sleep(3)
+input("Нажмите Enter чообы продолжить")
 os.system("cls")
 
 # random_index = random.choice(range(len(images)))
-random_index = 3
+random_index = 0
 
-print("Скажите где живёт?!\n")
-print(images[random_index])
+while random_index < len(images):
+    print("Скажите где живёт?!\n")
+    print(images[random_index])
 
-choice = int(input("Вы можете выбрать: 1 - Отгадать сразу; 2 - Взять подсказку. Но учтите подсказок всего 3. "))
+    choice = int(input("Вы можете выбрать: 1 - Отгадать сразу; 2 - Взять подсказку. Но учтите подсказок всего 3. "))
 
-hint_amount = 0
+    hint_amount = 0
 
-answer = ""
+    answer = ""
 
-while answer != places[random_index]:
-    if choice == 1:
-        print(f"Варианты: {places}")
-        answer = input("Ваш ответ: ")
-        os.system("cls")
-    else:
-        if hint_amount != 3:
-            print(hints[random_index])
-            hint_amount += 1
-            choice = int(
-                input("Вы можете выбрать: 1 - Отгадать сразу; 2 - Взять подсказку. Но учтите подсказок всего 3. "))
+    while answer != places[random_index]:
+        if choice == 1:
+            print(f"Варианты: {places}")
+            answer = input("Ваш ответ: ")
+            os.system("cls")
         else:
-            print("Подсказки кончились")
-            choice = 1
-print("Правильно!")
+            if hint_amount != 3:
+                print(hints[random_index])
+                hint_amount += 1
+                choice = int(
+                    input("Вы можете выбрать: 1 - Отгадать сразу; 2 - Взять подсказку. Но учтите подсказок всего 3. "))
+            else:
+                print("Подсказки кончились")
+                choice = 1
+    print("Правильно!")
+    random_index += 1
+print("Игра закончилась")
